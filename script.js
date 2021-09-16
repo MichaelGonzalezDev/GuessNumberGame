@@ -1,19 +1,10 @@
 "use strict";
 
-//how to select a class.
-//console.log(document.querySelector('.message').textContent);
-/*
-document.querySelector('.message').textContent = 'Correct Number!';
-document.querySelector('.number').textContent = 13;
-document.querySelector('.score').textContent = 99;
-document.querySelector('.highscore').textContent = 1000;
-document.querySelector('.guess').value = 13;
-*/
 
 let number = Math.trunc(Math.random() * 21);
 //document.querySelector(".number").textContent = number;
 let score = 20;
-let highscore = 0
+let highscore = 0;
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
@@ -25,12 +16,15 @@ document.querySelector(".check").addEventListener("click", function () {
   } else if (guess === number) {
     document.querySelector(".number").textContent = number;
     document.querySelector(".message").textContent = "Correct Number!";
-    score = score + 20;
     document.querySelector(".score").textContent = score;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').style.backgroundColor = 'rgb(900, 900, 5)';
-    highscore = highscore + 20;
+    
+    if (score > highscore) {
+        highscore = score;
+        document.querySelector('.highscore').textContent = highscore;
+      }
     
     //when guess is too high
   } else if (guess > number) {
@@ -65,14 +59,6 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector('.guess').value = '';
     document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.number').style.backgroundColor = 'rgb(255, 255, 255)';
-    highscore = highscore;
-    document.querySelector('.highscore').textContent = highscore
-
-
-
-
-    
-   
 
 
 })
